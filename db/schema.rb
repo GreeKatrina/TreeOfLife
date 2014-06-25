@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622113323) do
+ActiveRecord::Schema.define(version: 20140624151605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "nodes", force: true do |t|
+  create_table "species", force: true do |t|
+    t.integer "species_id"
     t.string  "name"
-    t.integer "node_id"
     t.boolean "extinct"
-    t.integer "num_children"
-    t.boolean "leaf"
     t.integer "phylesis"
-    t.integer "parent_node_id"
+    t.integer "parent_id"
+    t.boolean "leaf"
   end
 
-  add_index "nodes", ["node_id"], name: "index_nodes_on_node_id", using: :btree
+  add_index "species", ["name"], name: "index_species_on_name", using: :btree
+  add_index "species", ["parent_id"], name: "index_species_on_parent_id", using: :btree
+  add_index "species", ["species_id"], name: "index_species_on_species_id", using: :btree
 
 end
