@@ -20,20 +20,33 @@ module TreeOfLife
       Species.delete_all
     end
 
-    def build_species(species)
-      TreeOfLife::Species.new(species.species_id, species.name, species.phylesis, species.extinct, species.leaf)
+    def build_species(species, children=[])
+      TreeOfLife::Species.new(species.species_id, species.parent_id, species.name, species.phylesis, species.extinct, species.leaf, children)
     end
 
     def create_species(attrs)
-      Species.create!(attrs)
+      ar_species = Species.create!(attrs)
+      build_species(ar_species)
     end
 
     def get_species_by_id(species_id)
-      Species.where("species_id = ?", species_id).first
+      ar_species = Species.where("species_id = ?", species_id).first
+      build_species(ar_species)
     end
 
     def get_species_by_name(name)
-      Species.where("name = ?", name).first
+      ar_species = Species.where("name = ?", name).first
+      build_species(ar_species)
+    end
+
+    def get_species_children(species_id)
+      children = []
+      ar_species = Species.where("species_id = ?", species_id).first
+      result = Species.where('parent_id = ?', species_id)
+      result.each do |child|
+        children << build_species(child)
+      end
+      build_species(ar_species, children)
     end
   end
 end
