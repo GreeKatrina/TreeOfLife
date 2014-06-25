@@ -3,12 +3,14 @@ require 'json'
 class TreeOfLife::GetSpeciesData
   def run(species_name)
     returned_species = TreeOfLife.db.get_species_by_name(species_name)
+    # binding.pry
     if returned_species
       result_hash = build_entity_hash(returned_species)
-      # children =
-      # return {success?: true,
-      #         species:
-      #         }
+      children = TreeOfLife.db.get_species_children(species_name)
+      result_hash[:children] = children.map {|child| build_entity_hash(child)}
+      return {success?: true,
+              species: result_hash
+              }
     else
       return {success?: false}
     end
@@ -16,8 +18,8 @@ class TreeOfLife::GetSpeciesData
 
   def build_entity_hash(entity)
     {name: entity.name,
-      species_id: entity.name,
-      parent_id: entity.species_id,
+      species_id: entity.species_id,
+      parent_id: entity.parent_id,
       phylesis: entity.phylesis,
       extinct: entity.extinct,
       leaf: entity.leaf
