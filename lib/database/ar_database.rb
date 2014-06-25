@@ -26,27 +26,25 @@ module TreeOfLife
 
     def create_species(attrs)
       ar_species = Species.create!(attrs)
-      build_species(ar_species)
+      ar_species != nil ? build_species(ar_species) : nil
     end
 
     def get_species_by_id(species_id)
       ar_species = Species.where("species_id = ?", species_id).first
-      build_species(ar_species)
+      ar_species != nil ? build_species(ar_species) : nil
     end
 
     def get_species_by_name(name)
       ar_species = Species.where("name = ?", name).first
-      build_species(ar_species)
+      ar_species != nil ? build_species(ar_species) : nil
     end
 
-    def get_species_children(species_id)
-      children = []
-      ar_species = Species.where("species_id = ?", species_id).first
-      result = Species.where('parent_id = ?', species_id)
-      result.each do |child|
-        children << build_species(child)
-      end
-      build_species(ar_species, children)
+    def get_species_children(name)
+      ar_species = Species.where("name = ?", name).first
+      return ar_species if ar_species == nil
+
+      result = Species.where('parent_id = ?', ar_species.species_id)
+      result.map {|child| build_species(child)}
     end
   end
 end

@@ -11,6 +11,7 @@ gem 'rack-test'
 gem 'capybara' #add-on to rspec to test views
 gem 'sass'
 gem 'rake'
+gem 'json'
 
 group :test do
   gem 'rspec', '~> 2.14.0'

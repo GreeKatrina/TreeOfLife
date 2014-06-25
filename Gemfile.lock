@@ -101,6 +101,7 @@ DEPENDENCIES
   active_record_tasks (~> 1.1.0)
   activerecord (~> 4.1.0)
   capybara
+  json
   pg
   pry-debugger (~> 0.2.2)
   rack-test
