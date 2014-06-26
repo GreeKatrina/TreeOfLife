@@ -4061,11 +4061,11 @@ $jit.Graph = new Class({
 
   */
   addNode: function(obj) {
-   if(!this.nodes[obj.species_id]) {
-     var edges = this.edges[obj.species_id] = {};
+   if(!this.nodes[obj.id]) {
+     var edges = this.edges[obj.id] = {};
      this.nodes[obj.id] = new Graph.Node($.extend({
         'name': obj.name,
-        'id': obj.species_id,
+        'id': obj.id,
         'parent': obj.parent_id,
         'phylesis': obj.phylesis,
         'extinct': obj.extinct,
@@ -4078,7 +4078,7 @@ $jit.Graph = new Class({
       this.Edge,
       this.Label);
     }
-    return this.nodes[obj.species_id];
+    return this.nodes[obj.id];
   },
 
     /*

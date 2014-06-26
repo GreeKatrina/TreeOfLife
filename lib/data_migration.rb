@@ -31,12 +31,12 @@ module TreeOfLife
     hash.delete('@CONFIDENCE')
     hash.delete('@HASPAGE')
     # convert extinct data to boolean
-    hash['@EXTINCT'] == 0 ? extinct = false : extinct = true
+    hash['@EXTINCT'] == "0" ? extinct = false : extinct = true
      # convert leaf data to boolean
-    hash['@LEAF'] == 0 ? leaf = false : leaf = true
+    hash['@LEAF'] == "0" ? leaf = false : leaf = true
 
-    hash['@EXTINCT'] == 0 ? hash['@EXTINCT'] == false : hash['@EXTINCT'] == true
-    hash['@LEAF'] == 0 ? hash['@LEAF'] == false : hash['@LEAF'] == true
+    hash['@EXTINCT'] == "0" ? hash['@EXTINCT'] == false : hash['@EXTINCT'] == true
+    hash['@LEAF'] == "0" ? hash['@LEAF'] == false : hash['@LEAF'] == true
     TreeOfLife.db.create_species(species_id: hash['@ID'].to_i, name: hash['NAME'], extinct: extinct, phylesis: hash['@PHYLESIS'], leaf: leaf, parent_id: p_id)
   end
 end
