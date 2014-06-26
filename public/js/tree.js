@@ -106,6 +106,28 @@
           subtree: {
 
           },
+          parentNode: function(node){
+            parentNode = node.parent_id;
+            $.ajax({
+              type: 'GET',
+              url: '/node-attributes',
+              data: { name: parentNode.name },
+              success: function(newNode) {
+              }
+            });
+          },
+          childrenNodes: function(node){
+            for (var i = 0; i < node.children.length; i++){
+              $.ajax({
+                type: 'GET',
+                url: '/node-attributes',
+                data: { name: node.children[i].name },
+                success: function(newNode) {
+                  node.children[i] = newNode;
+                }
+              });
+            }
+          },
           //This method is called on DOM label creation.
           //Use this method to add event handlers and styles to
           //your node.
@@ -124,16 +146,19 @@
                 style.paddingTop = '3px';
               }
               label.onclick = function() {
+                  console.log("Node: ", node);
                   st.onClick(node.id, {
                       onComplete: function() {
-                          $.ajax({
-                            type: 'GET',
-                            url: '/node-attributes',
-                            data: { name: node.name },
-                            success: function(newNode) {
-                            st.addSubtree(newNode, 'animate');
-                            }
-                          });
+                          // $.ajax({
+                          //   type: 'GET',
+                          //   url: '/node-attributes',
+                          //   data: { name: node.name },
+                          //   success: function(newNode) {
+                          //   st.addSubtree(newNode, 'animate');
+                          //   }
+                          // });
+                          // st.parentNode();
+                          st.addSubtree(node, 'animate');
                       }
                   });
               }
