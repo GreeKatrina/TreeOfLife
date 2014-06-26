@@ -37,7 +37,7 @@ module TreeOfLife
 
     hash['@EXTINCT'] == 0 ? hash['@EXTINCT'] == false : hash['@EXTINCT'] == true
     hash['@LEAF'] == 0 ? hash['@LEAF'] == false : hash['@LEAF'] == true
-    TreeOfLife.db.create_species(species_id: hash['@ID'].to_i, name: hash['@NAME'], extinct: extinct, phylesis: hash['@PHYLESIS'], leaf: leaf, parent_id: p_id)
+    TreeOfLife.db.create_species(species_id: hash['@ID'].to_i, name: hash['NAME'], extinct: extinct, phylesis: hash['@PHYLESIS'], leaf: leaf, parent_id: p_id)
   end
 end
 
