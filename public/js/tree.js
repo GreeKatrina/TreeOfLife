@@ -60,7 +60,6 @@
             enable:true,
             panning:true
           },
-          // levelsToShow: 0,
           //set node and edge styles
           //set overridable=true for styling individual
           //nodes or edges
@@ -111,48 +110,32 @@
           //Use this method to add event handlers and styles to
           //your node.
           onCreateLabel: function(label, node){
-              console.log("Node:", node)
               label.id = node.id;
               label.innerHTML = node.name;
-              label.onclick = function() {
-                // setTimeout(function () {
-                  // st.addSubtree(subtree, 'animate');
-                // }, 1000);
-
-                // st.onClick(node.id);
-                $.ajax({
-                  type: 'GET',
-                  url: '/node-attributes',
-                  data: { name: node.name },
-                  success: function(newNode) {
-                    // newNode.children.uniq {|child| child.id }
-                    // newNode.children = _.uniq(newNode.children, false, function (child) {return child.id});
-                    // newNode.children = _.map(newNode.children, function (child) {
-                    //   var c = _.pick(child, 'id', 'name', 'data');
-                    //   c.children = [];
-                    //   return c;
-                    // });
-                    // newNode = _.pick(newNode, 'id', 'name', 'data', 'children');
-                    console.log('Adding subtree:', newNode);
-                    st.addSubtree(newNode, 'animate');
-                    // st.addSubtree(subtree, 'animate');
-                    // st.levelsToShow = 1;
-                    // st.setRoot(newNode.id);
-                  }
-                });
-                    // st.onClick(node.id);
-              };
-              //set label styles
+              var style = label.style;
               if (node.name !== null) {
-                  var style = label.style;
-                  style.width = 147 + 'px';
-                  style.height = 17 + 'px';
-                  style.cursor = 'pointer';
-                  // font color of nodes
-                  style.color = '#F2F1EF';
-                  style.fontSize = '0.8em';
-                  style.textAlign= 'center';
-                  style.paddingTop = '3px';
+                style.width = 147 + 'px';
+                style.height = 17 + 'px';
+                style.cursor = 'pointer';
+                // font color of nodes
+                style.color = '#F2F1EF';
+                style.fontSize = '0.8em';
+                style.textAlign= 'center';
+                style.paddingTop = '3px';
+              }
+              label.onclick = function() {
+                  st.onClick(node.id, {
+                      onComplete: function() {
+                          $.ajax({
+                            type: 'GET',
+                            url: '/node-attributes',
+                            data: { name: node.name },
+                            success: function(newNode) {
+                            st.addSubtree(newNode, 'animate');
+                            }
+                          });
+                      }
+                  });
               }
           },
 
