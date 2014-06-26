@@ -30,153 +30,47 @@ var Log = {
 function init(){
     //init data
     var json = {
-            data: {},
-            id: "1",
-            name: "Life on Earth",
-            children: [
-                {
-                  data: {},
-                  id: "2",
-                  name: "Eubacteria",
-                  children: [
-                      {
-                        data: {},
-                        id: "2285",
-                        name: "Aquificae",
-                        children: [
-                            {
-                              data: {},
-                              id: "59615",
-                              name: "Aquifex",
-                              children: []
-                            },
-                            {
-                              data: {},
-                              id: "59616",
-                              name: "Calderobacterium",
-                              children: []
-                            },
-                            {
-                              data: {},
-                              id: "59617",
-                              name: "Hydrogenobacter",
-                              children: []
-                            },
-                            {
-                              data: {},
-                              id: "59618",
-                              children: [],
-                              name: "Thermocrinis"
-                            },
-                            {
-                              data: {},
-                              id: "59619",
-                              children: [],
-                              name: "Hydrogenothermus"
-                            },
-                            {
-                              data: {},
-                              id: "59620",
-                              children: [],
-                              name: "Persephonella"
-                            },
-                            {
-                              data: {},
-                              id: "59621",
-                              children: [],
-                              name: "Sulfurihydrogenibium"
-                            },
-                            {
-                              data: {},
-                              id: "59622",
-                              children: [],
-                              name: "Balnearium"
-                            },
-                            {
-                              data: {},
-                              id: "59623",
-                              children: [],
-                              name: "Desulfurobacterium"
-                            },
-                            {
-                              data: {},
-                              id: "59624",
-                              children: [],
-                              name: "Thermovibrio"
-                            }
-                        ]
-                      }
-                    ]
-                },
-                {
-                  data: {},
-                  id: "3",
-                  name: "Eukaryotes",
-                  extinct: true,
-                  children: [
-                      {
-                        data: {},
-                        id: "2372",
-                        name: "opisthokonts",
-                        children: [
-                            {
-                                data: {},
-                                id: "2373",
-                                name: null,
-                                children: [
-                                    {
-                                        data: {},
-                                        id: "2374",
-                                        name: "Animals",
-                                        children: [
-                                            {
-                                                data: {},
-                                                id: "2458",
-                                                name: null,
-                                                children: [
-                                                    {
-                                                        data: {},
-                                                        id: "2459",
-                                                        name: "Bilateria",
-                                                        children: []
-                                                    },
-                                                    {
-                                                        data: {},
-                                                        id: "6666",
-                                                        name: "Cnidaria",
-                                                        children: []
-                                                    }
-
-                                                ]
-                                            },
-                                            {
-                                                data: {},
-                                                id: "3636",
-                                                name: "Porifera",
-                                                children: []
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        data: {},
-                                        id: "6633",
-                                        name: "Choanoflagellates",
-                                        children: []
-                                    }
-                                ]
-                            },
-                            {
-                               data: {},
-                               id: "3366",
-                               name: "Amoebozoa",
-                               children: []
-                            }
-                        ]
-                     }
-                  ]
-               }
-            ]
-        };
+          "name": "Life on Earth",
+          "species_id": 1,
+          "parent_id": 0,
+          "phylesis": 0,
+          "extinct": true,
+          "leaf": true,
+          "children": [
+              {
+                  "name": "Eubacteria",
+                  "species_id": 2,
+                  "parent_id": 1,
+                  "phylesis": 0,
+                  "extinct": true,
+                  "leaf": true
+              },
+              {
+                  "name": "Eukaryotes",
+                  "species_id": 3,
+                  "parent_id": 1,
+                  "phylesis": 0,
+                  "extinct": true,
+                  "leaf": true
+              },
+              {
+                  "name": "Archaea",
+                  "species_id": 4,
+                  "parent_id": 1,
+                  "phylesis": 1,
+                  "extinct": true,
+                  "leaf": true
+              },
+              {
+                  "name": "Viruses",
+                  "species_id": 5,
+                  "parent_id": 1,
+                  "phylesis": 1,
+                  "extinct": true,
+                  "leaf": true
+              }
+          ]
+      };
     //end
     //init Spacetree
     //Create a new ST instance

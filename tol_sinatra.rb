@@ -15,3 +15,6 @@ get '/node-attributes' do
   result[:species].to_json
 end
 
+get '/' do
+  erb :index
+end

@@ -4061,13 +4061,16 @@ $jit.Graph = new Class({
 
   */
   addNode: function(obj) {
-   if(!this.nodes[obj.id]) {
-     var edges = this.edges[obj.id] = {};
+   if(!this.nodes[obj.species_id]) {
+     var edges = this.edges[obj.species_id] = {};
      this.nodes[obj.id] = new Graph.Node($.extend({
-        'id': obj.id,
         'name': obj.name,
-        'data': $.merge(obj.data || {}, {}),
+        'id': obj.species_id,
+        'parent': obj.parent_id,
+        'phylesis': obj.phylesis,
         'extinct': obj.extinct,
+        'leaf': obj.leaf,
+        'data': $.merge(obj.data || {}, {}),
         'adjacencies': edges
       }, this.opt.Node),
       this.opt.klass,
@@ -4075,7 +4078,7 @@ $jit.Graph = new Class({
       this.Edge,
       this.Label);
     }
-    return this.nodes[obj.id];
+    return this.nodes[obj.species_id];
   },
 
     /*
