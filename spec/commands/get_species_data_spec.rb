@@ -12,20 +12,20 @@ describe TreeOfLife::GetSpeciesData do
   end
 
   it 'returns success? is false if the passed in name is not an actual species' do
-    result = @get_species.run('test')
+    result = @get_species.run(10)
     expect(result[:success?]).to eq(false)
   end
 
   it 'returns success is true if the passed in name is a species' do
-    result = @get_species.run('Life on Earth')
+    result = @get_species.run(1)
     expect(result[:success?]).to eq(true)
   end
 
   it 'returns a hash with an attribute of species that points to a nested hash containing the species attributes, including children which contains an array of hashes' do
-    result = @get_species.run('Life on Earth')
+    result = @get_species.run(1)
     returned = result[:species]
     expect(returned).to be_a(Hash)
-    expect(returned[:species_id]).to eq(1)
+    expect(returned[:id]).to eq(1)
     expect(returned[:name]).to eq('Life on Earth')
     expect(returned[:extinct]).to be(false)
     expect(returned[:phylesis]).to eq(2)

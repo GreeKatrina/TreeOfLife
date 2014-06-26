@@ -39,11 +39,11 @@ module TreeOfLife
       ar_species != nil ? build_species(ar_species) : nil
     end
 
-    def get_species_children(name)
-      ar_species = Species.where("name = ?", name).first
+    def get_species_children(species_id)
+      ar_species = Species.where("species_id = ?", species_id).first
       return ar_species if ar_species == nil
 
-      result = Species.where('parent_id = ?', ar_species.species_id)
+      result = Species.where('parent_id = ?', species_id)
       result.map {|child| build_species(child)}
     end
   end

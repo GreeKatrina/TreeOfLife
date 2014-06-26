@@ -1,12 +1,12 @@
 require 'json'
 
 class TreeOfLife::GetSpeciesData
-  def run(species_name)
-    returned_species = TreeOfLife.db.get_species_by_name(species_name)
+  def run(species_id)
+    returned_species = TreeOfLife.db.get_species_by_id(species_id)
     # binding.pry
     if returned_species
       result_hash = build_entity_hash(returned_species)
-      children = TreeOfLife.db.get_species_children(species_name)
+      children = TreeOfLife.db.get_species_children(species_id)
       result_hash[:children] = children.map {|child| build_entity_hash(child)}
       return {success?: true,
               species: result_hash
