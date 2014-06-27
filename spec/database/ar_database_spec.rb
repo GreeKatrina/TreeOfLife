@@ -34,10 +34,10 @@ describe TreeOfLife::ActiveRecordDatabase do
     db.create_species(species_id: 2, name: "Animal", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
     db.create_species(species_id: 3, name: "Plant", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
     db.create_species(species_id: 4, name: "Bacteria", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
-    species = db.get_species_children('Tree of Life')
+    db.create_species(species_id: 4, name: "Other", extinct: false, phylesis: 2, leaf: true, parent_id: 2)
+    species = db.get_species_children(1)
     expect(species.count).to eq(3)
     expect(species[0].class).to eq(TreeOfLife::Species)
-    expect(species[0]).to_not eq(species[1])
-    expect(species[0]).to_not eq(species[2])
+    expect(species.map(&:name)).to include("Animal", "Plant", "Bacteria")
   end
 end
