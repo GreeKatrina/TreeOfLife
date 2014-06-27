@@ -7,11 +7,10 @@ class TreeOfLife::GetSpeciesData
       children = TreeOfLife.db.get_species_children(species_id)
       result_hash[:children] = children.map {|child| build_entity_hash(child)}
       result_hash[:children].each do |child|
-        if !child[:name] || child[:name].length == 0
+        if child[:name].nil?
           children_result = TreeOfLife.db.get_species_children(child[:id])
-          result_hash[:children].delete(child)
-          new_children = children_result.map{|c| build_entity_hash(c)}
-          result_hash[:children].push(new_children)
+          child[:children] = children_result.map{|c| build_entity_hash(c)}
+          # binding.pry
         end
       end
 
