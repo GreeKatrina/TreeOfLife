@@ -65,5 +65,17 @@ describe TreeOfLife::GetSpeciesData do
         expect(result[:wiki]).to eq(false)
       end
     end
+
+    describe 'getting sidebar image' do
+      it "gets the sidebar image for a page and returns the url in the wiki_sidebar attribute" do
+        result = @get_species.run(2)
+        expect(result[:wiki_sidebar]).to eq(result[:wiki].sidebar_image)
+      end
+    end
+
+      it "returns false for the sidebar image for a page in the wiki_sidebar attribute" do
+        result1 = @get_species.run(1)
+        expect(result1[:wiki_sidebar]).to eq(false)
+      end
   end
 end

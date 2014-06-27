@@ -14,6 +14,7 @@ class TreeOfLife::GetSpeciesData
       end
 
       wiki_page = Wikiwhat::Page.new(result_hash[:name], :paragraphs => 1)
+
       begin
         if wiki_page.paragraphs
           wiki_result = wiki_page
@@ -22,9 +23,18 @@ class TreeOfLife::GetSpeciesData
         wiki_result = false
       end
 
+      begin
+        if wiki_page.sidebar_image
+          wiki_image = wiki_page.sidebar_image
+        end
+      rescue
+        wiki_image = false
+      end
+
       return {success?: true,
               species: result_hash,
-              wiki: wiki_result
+              wiki: wiki_result,
+              wiki_sidebar: wiki_image
               }
     else
       return {success?: false}
