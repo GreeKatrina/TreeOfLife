@@ -32,17 +32,15 @@
   function init(){
       //init data
       var json = {
-            "name": "Life on Earth",
-            "id": 1,
-            "parent_id": 0,
-            "phylesis": 0,
-            "extinct": false,
-            "leaf": false,
-            "data": {},
-            "children": []
-            // "children": [{ id: 2, name: 'child', data: {}, children: [{ id: 3, name: 'child2', data: {}, children: [{ id: 4, name: 'child3', data: {}, children: [] }] }] }]
-        };
-      var children = {};
+          "name": "Tree of Life",
+          "id": 1,
+          "parent_id": 0,
+          "phylesis": 2,
+          "extinct": false,
+          "leaf": true,
+          "data": {},
+          "children": []
+      };
       //end
       //init Spacetree
       //Create a new ST instance
@@ -55,6 +53,7 @@
           transition: $jit.Trans.Quart.easeInOut,
           //set distance between node and its children
           levelDistance: 50,
+          levelsToShow: 3,
           //enable panning
           Navigation: {
             enable:true,
@@ -92,42 +91,6 @@
           onAfterCompute: function(){
               Log.write("done");
           },
-          databaseCall: function(node){
-            $.ajax({
-              type: 'GET',
-              url: '/node-attributes',
-              data: { name: node.name },
-              success: function(newNode){
-                node = JSON.parse(newNode);
-                json[node.id] = node;
-              }
-            })
-          },
-          subtree: {
-
-          },
-          parentNode: function(node){
-            parentNode = node.parent_id;
-            $.ajax({
-              type: 'GET',
-              url: '/node-attributes',
-              data: { name: parentNode.name },
-              success: function(newNode) {
-              }
-            });
-          },
-          childrenNodes: function(node){
-            for (var i = 0; i < node.children.length; i++){
-              $.ajax({
-                type: 'GET',
-                url: '/node-attributes',
-                data: { name: node.children[i].name },
-                success: function(newNode) {
-                  node.children[i] = newNode;
-                }
-              });
-            }
-          },
           //This method is called on DOM label creation.
           //Use this method to add event handlers and styles to
           //your node.
@@ -146,19 +109,22 @@
                 style.paddingTop = '3px';
               }
               label.onclick = function() {
-                  console.log("Node: ", node);
                   st.onClick(node.id, {
                       onComplete: function() {
-                          // $.ajax({
-                          //   type: 'GET',
-                          //   url: '/node-attributes',
-                          //   data: { name: node.name },
-                          //   success: function(newNode) {
-                          //   st.addSubtree(newNode, 'animate');
-                          //   }
-                          // });
-                          // st.parentNode();
-                          st.addSubtree(node, 'animate');
+                          $.ajax({
+                            type: 'GET',
+                            url: '/node-attributes',
+                            data: { id: node.id },
+                            success: function(newNode) {
+                              console.log(newNode.children);
+                              // for (var child in newNode.children){
+                              //   if (child.name === null){
+                              //     st.onClick(node.id);
+                              //   }
+                              // }
+                              st.addSubtree(newNode, 'replot');
+                            }
+                          });
                       }
                   });
               }
@@ -227,38 +193,6 @@
       st.geom.translate(new $jit.Complex(-200, 0), "current");
       //emulate a click on the root node.
       st.onClick(st.root);
-      //end
-
-
-      // window.subtree = {
-      //   id: 1,
-      //   name: "The Root",
-      //   data: {},
-      //   children: [
-      //     { id: 2, name: 'child1', data: {}, children: [] },
-      //     { id: 3, name: 'child2', data: {}, children: [] },
-      //     { id: 4, name: 'child3', data: {}, children: [] }
-      //   ]
-      // };
-      // window.st = st;
-
-      //Add event handlers to switch spacetree orientation.
-      var left = $jit.id('r-left'),
-          right = $jit.id('r-right');
-
-
-      function changeHandler() {
-          if(this.checked) {
-              right.disabled = left.disabled = true;
-              st.switchPosition(this.value, "animate", {
-                  onComplete: function(){
-                      right.disabled = left.disabled = false;
-                  }
-              });
-          }
-      };
-
-      left.onchange = right.onchange = changeHandler;
       //end
 
   }

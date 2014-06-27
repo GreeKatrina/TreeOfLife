@@ -43,7 +43,7 @@ class TreeOfLife::GetSpeciesData
 
   def build_entity_hash(entity)
     {name: entity.name,
-      id: entity.species_id,
+      id: entity.id,
       parent_id: entity.parent_id,
       phylesis: entity.phylesis,
       extinct: entity.extinct,

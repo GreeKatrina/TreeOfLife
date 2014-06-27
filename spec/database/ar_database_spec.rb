@@ -23,7 +23,7 @@ describe TreeOfLife::ActiveRecordDatabase do
 
   it 'gets a species record by name' do
     species = db.get_species_by_name('Tree of Life')
-    expect(species.species_id).to eq(1)
+    expect(species.id).to eq(1)
     expect(species.parent_id).to eq(0)
     expect(species.extinct).to eq(false)
     expect(species.phylesis).to eq(2)

@@ -7,9 +7,9 @@ set :bind, '0.0.0.0'
 set :environment, :development
 
 get '/node-attributes' do
-  @node_name = params[:name]
-  puts @node_name
-  result = TreeOfLife::GetSpeciesData.new.run(@node_name)
+  @node_id = params[:id]
+  puts @node_id
+  result = TreeOfLife::GetSpeciesData.new.run(@node_id)
   p result[:success?]
   content_type :json
   result[:species].to_json
@@ -17,4 +17,8 @@ end
 
 get '/' do
   erb :index
+end
+
+after do
+  ActiveRecord::Base.clear_active_connections! if settings.development?
 end
