@@ -53,7 +53,7 @@
           transition: $jit.Trans.Quart.easeInOut,
           //set distance between node and its children
           levelDistance: 50,
-          levelsToShow: 1,
+          levelsToShow: 2,
           //enable panning
           Navigation: {
             enable:true,
@@ -96,7 +96,9 @@
           //your node.
           onCreateLabel: function(label, node){
               label.id = node.id;
-              label.innerHTML = node.name;
+              if (node.name){
+                label.innerHTML = node.name;
+              }
               var style = label.style;
               if (node.name !== null) {
                 style.width = 147 + 'px';
@@ -157,7 +159,7 @@
                   }
               }
               // hacky way to make name-less nodes appear as lines
-              if (node.name === null) {
+              if (node.name === undefined) {
                   if (node.selected) {
                       node.data.$height = 3;
                       node.data.$color = "#F2F1EF";
