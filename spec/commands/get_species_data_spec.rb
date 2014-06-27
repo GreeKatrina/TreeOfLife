@@ -8,6 +8,7 @@ describe TreeOfLife::GetSpeciesData do
     db.create_species(species_id: 2, name: "Animal", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
     db.create_species(species_id: 3, name: "Plant", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
     db.create_species(species_id: 4, name: "Bacteria", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
+    db.create_species(species_id: 5, name: "Testing", extinct: false, phylesis: 2, leaf: true, parent_id: 4)
     @get_species = TreeOfLife::GetSpeciesData.new
   end
 
@@ -36,7 +37,7 @@ describe TreeOfLife::GetSpeciesData do
       expect(returned[:children][0].class).to eq(Hash)
     end
 
-    it "returns the chlildren of a child node that has a name attribute of null in addition to other children" do
+    it "returns the children of a child node that has a name attribute of null in addition to other children" do
       db.create_species(species_id: 5, name: "null", extinct: false, phylesis: 2, leaf: true, parent_id: 1)
       db.create_species(species_id: 6, name: "Fake", extinct: false, phylesis: 2, leaf: true, parent_id: 5)
       result = @get_species.run(1)
@@ -49,12 +50,18 @@ describe TreeOfLife::GetSpeciesData do
   describe 'wikiwhat call' do
     describe 'successful call' do
       xit 'returns a key of wiki pointing to the species wikipedia info, including the title, 1st paragraph and sidebar img' do
-
+        result = @get_species.run(1)
+        expect(result[:species][:name]).to eq('Life on Earth')
+        expect(result[:wiki].paragraphs.size).to eq(1)
       end
     end
 
     describe 'unsuccessful call' do
       xit 'returns a key of wiki pointing to false' do
+        db.create_species(species_id: 10, name: "Carboxydothermus", extinct: false, phylesis: 2, leaf: true, parent_id: 4)
+        result = @get_species.run(10)
+        expect(result[:species][:name]).to eq("Carboxydothermus")
+        expect(result[:wiki]).to eq(false)
       end
     end
   end

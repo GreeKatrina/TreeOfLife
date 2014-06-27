@@ -1,4 +1,3 @@
-require 'json'
 
 class TreeOfLife::GetSpeciesData
   def run(species_id)
@@ -8,12 +7,16 @@ class TreeOfLife::GetSpeciesData
       children = TreeOfLife.db.get_species_children(species_id)
       result_hash[:children] = children.map {|child| build_entity_hash(child)}
       result_hash[:children].each do |child|
-        if child[:name].length == 0
-          new_children = TreeOfLife.db.get_species_children(child.id)
+        if !child[:name] || child[:name].length == 0
+          children_result = TreeOfLife.db.get_species_children(child[:id])
           result_hash[:children].delete(child)
-          result_hash.merge(new_children)
+          new_children = children_result.map{|c| build_entity_hash(c)}
+          result_hash[:children].push(new_children)
         end
       end
+
+      # wiki_page = Wikiwhat::Page.new(result_hash[:name], :paragraphs => 1,  :sidebar_img => true)
+      # wiki_result = wiki_page.paragraphs rescue false
 
       return {success?: true,
               species: result_hash

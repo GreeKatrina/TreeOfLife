@@ -1,3 +1,6 @@
+require 'json'
+require 'wikiwhat'
+
 module TreeOfLife
   def self.db
     @__db_instance ||= ActiveRecordDatabase.new
