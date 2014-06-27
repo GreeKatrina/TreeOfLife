@@ -48,7 +48,7 @@ a {
 #left-container, #right-container {
     width:15%;
     color:#ABB7B7;
-    text-align: left;
+    text-align: center;
     overflow: auto;
     background-color:#3E3E40;
     border-bottom:1px solid #ddd;
