@@ -50,7 +50,7 @@ describe TreeOfLife::GetSpeciesData do
 
   describe 'wikiwhat call' do
     describe 'successful call' do
-      xit 'returns a key of wiki pointing to the species wikipedia info, including the title, 1st paragraph and sidebar img' do
+      it 'returns a key of wiki pointing to the species wikipedia info, including the title, 1st paragraph and sidebar img' do
         result = @get_species.run(1)
         expect(result[:species][:name]).to eq('Life on Earth')
         expect(result[:wiki].paragraphs.size).to eq(1)
@@ -58,7 +58,7 @@ describe TreeOfLife::GetSpeciesData do
     end
 
     describe 'unsuccessful call' do
-      xit 'returns a key of wiki pointing to false' do
+      it 'returns a key of wiki pointing to false' do
         db.create_species(species_id: 10, name: "Carboxydothermus", extinct: false, phylesis: 2, leaf: true, parent_id: 4)
         result = @get_species.run(10)
         expect(result[:species][:name]).to eq("Carboxydothermus")

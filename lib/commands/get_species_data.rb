@@ -10,15 +10,21 @@ class TreeOfLife::GetSpeciesData
         if child[:name].nil?
           children_result = TreeOfLife.db.get_species_children(child[:id])
           child[:children] = children_result.map{|c| build_entity_hash(c)}
-          # binding.pry
         end
       end
 
-      # wiki_page = Wikiwhat::Page.new(result_hash[:name], :paragraphs => 1,  :sidebar_img => true)
-      # wiki_result = wiki_page.paragraphs rescue false
+      wiki_page = Wikiwhat::Page.new(result_hash[:name], :paragraphs => 1)
+      begin
+        if wiki_page.paragraphs
+          wiki_result = wiki_page
+        end
+      rescue NoMethodError => e
+        wiki_result = false
+      end
 
       return {success?: true,
-              species: result_hash
+              species: result_hash,
+              wiki: wiki_result
               }
     else
       return {success?: false}
