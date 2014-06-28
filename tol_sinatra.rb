@@ -3,8 +3,14 @@ require 'sinatra/reloader'
 require 'json'
 require_relative './lib/tree_of_life.rb'
 
+# Figure out what kind of environment to run in - dev is the default
+ENV['APP_ENV'] ||= (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development')
+
+# Grab config data from the config file
+db_config = YAML.load_file(File.expand_path('../../../db/config.yml', __FILE__))
+
 set :bind, '0.0.0.0'
-set :environment, :development
+set :environment, ENV['APP_ENV']
 
 get '/node-attributes' do
   @node_id = params[:id]

@@ -1,11 +1,13 @@
 development:
   adapter: postgresql
-  database: TreeOfLife_dev
+  database: treeoflife_dev
   pool: 5
   timeout: 5000
+  host: localhost
 
 test:
   adapter: postgresql
-  database: TreeOfLife_test
+  database: treeoflife_test
   pool: 5
   timeout: 5000
+  host: localhost

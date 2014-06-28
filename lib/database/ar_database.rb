@@ -1,4 +1,5 @@
 require 'active_record'
+require 'yaml'
 require 'pry'
 
 module TreeOfLife
@@ -7,9 +8,16 @@ module TreeOfLife
   end
   class ActiveRecordDatabase
     def initialize
+
+      # Figure out what kind of environment to run in - dev is the default
+      ENV['APP_ENV'] ||= (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development')
+
+      # Grab config data from the config file
+      db_config = YAML.load_file(File.expand_path('../../../db/config.yml', __FILE__))
+
       ActiveRecord::Base.establish_connection(
-      :adapter => 'postgresql',
-      :database => 'TreeOfLife_dev'
+        :adapter  => db_config[ENV['APP_ENV']]['adapter'],
+        :database => db_config[ENV['APP_ENV']]['database']
       )
     end
 
