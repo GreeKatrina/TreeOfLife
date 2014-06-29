@@ -6,12 +6,6 @@ class TreeOfLife::GetSpeciesData
       result_hash = build_entity_hash(returned_species)
       children = TreeOfLife.db.get_species_children(species_id)
       result_hash[:children] = children.map {|child| build_entity_hash(child)}
-      result_hash[:children].each do |child|
-        if child[:name].nil?
-          children_result = TreeOfLife.db.get_species_children(child[:id])
-          child[:children] = children_result.map{|c| build_entity_hash(c)}
-        end
-      end
 
       wiki_page = Wikiwhat::Page.new(result_hash[:name], :paragraphs => 1)
 

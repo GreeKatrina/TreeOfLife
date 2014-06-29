@@ -36,16 +36,6 @@ describe TreeOfLife::GetSpeciesData do
       expect(returned[:children].count).to eq(3)
       expect(returned[:children][0].class).to eq(Hash)
     end
-
-    it "returns a children array that includes a null node, which will have a children array that points to it's children" do
-      db.create_species(species_id: 5, name: nil, extinct: false, phylesis: 2, leaf: true, parent_id: 1)
-      db.create_species(species_id: 6, name: "Fake", extinct: false, phylesis: 2, leaf: true, parent_id: 5)
-      result = @get_species.run(1)
-      returned = result[:species]
-      expect(returned[:children].count).to eq(4)
-      null_node = returned[:children].last
-      expect(null_node[:children].count).to eq(1)
-    end
   end
 
   describe 'wikiwhat call' do
