@@ -8,11 +8,9 @@ set :environment, :development
 
 get '/node-attributes' do
   @node_name = params[:name]
-  puts @node_name
   result = TreeOfLife::GetSpeciesData.new.run(@node_name)
-  p result[:success?]
   content_type :json
-  result[:species].to_json
+  result.to_json
 end
 
 get '/' do

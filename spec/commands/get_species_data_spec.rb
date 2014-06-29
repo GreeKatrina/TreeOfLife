@@ -43,7 +43,8 @@ describe TreeOfLife::GetSpeciesData do
       it 'returns a key of wiki pointing to the species wikipedia info, including the title, 1st paragraph and sidebar img' do
         result = @get_species.run(1)
         expect(result[:species][:name]).to eq('Life on Earth')
-        expect(result[:wiki].paragraphs.size).to eq(1)
+        expect(result[:wiki][:title]).to eq('Life on Earth')
+        expect(result[:wiki][:paragraphs].size).to eq(1)
       end
     end
 
@@ -59,7 +60,7 @@ describe TreeOfLife::GetSpeciesData do
     describe 'getting sidebar image' do
       it "gets the sidebar image for a page and returns the url in the wiki_sidebar attribute" do
         result = @get_species.run(2)
-        expect(result[:wiki_sidebar]).to eq(result[:wiki].sidebar_image)
+        expect(result[:wiki_sidebar]).to_not eq(false)
       end
     end
 

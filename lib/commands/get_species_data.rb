@@ -11,7 +11,9 @@ class TreeOfLife::GetSpeciesData
 
       begin
         if wiki_page.paragraphs
-          wiki_result = wiki_page
+          wiki_result = {title: wiki_page.title,
+                        paragraphs: wiki_page.paragraphs
+                        }
         end
       rescue NoMethodError => e
         wiki_result = false
