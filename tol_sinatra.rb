@@ -7,8 +7,8 @@ set :bind, '0.0.0.0'
 set :environment, :development
 
 get '/node-attributes' do
-  @node_name = params[:name]
-  result = TreeOfLife::GetSpeciesData.new.run(@node_name)
+  @node_id = params[:id]
+  result = TreeOfLife::GetSpeciesData.new.run(@node_id)
   content_type :json
   result.to_json
 end
