@@ -10,7 +10,7 @@
 
  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
- <<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 
 <!--[if IE]><script language="javascript" type="text/javascript" src="js/canvas.js"></script><![endif]-->
 
@@ -25,22 +25,45 @@
 <div id="container">
 
 <div id="left-container">
+  <div class="left_container_text">
+      <h4>Tree of Life</h4>
+      <p>
+          Welcome to Tree of Life! This is a data visualization app that allows you to click through the Tree of Life starting at the beginning of life.<br /><br />
+          A static JSON Tree structure is used as input for this animation paired with Infovis, a Javascript toolkit.<br /><br />
+          Click on a node to select it.<br /><br />
+      </p>
 
+      <div class="line"></div>
 
+      <h4>Legend</h4>
 
-<div class="text">
-<h4>
-Tree of Life
-</h4>
-            Welcome to Tree of Life! This is a data visualization app that allows you to click through the Tree of Life starting at the single celled organism.<br /><br />
-            A static JSON Tree structure is used as input for this animation.<br /><br />
-            <b>Click</b> on a node to select it.<br /><br />
+      <div class="legend">
+        <div class="alive_selected"></div><p> - not extinct, selected node</p><br />
+        <div class="extinct_selected"></div><p> - extinct, selected node</p><br />
+        <div class="alive_not_selected"></div><p> - not extinct, not selected node</p><br />
+        <div class="extinct_not_selected"></div><p> - extinct, not selected node</p><br />
+      </div>
 
-</div>
+      <div class="line"></div>
 
-<div id="id-list"></div>
+      <h4>Sources</h4>
 
+      <div class="sources">
+        <a href="http://tolweb.org/tree/home.pages/downloadtree.html">Tree Of Life API</a><br /><br />
+        <a href="http://itol.embl.de/">Interactive TOL</a><br /><br />
+        <a href="http://www.open.edu/openlearn/nature-environment/natural-history/tree-life">The Open University</a><br /><br />
+        <a href="http://www.onezoom.org/">One Zoom TOL Explorer</a><br /><br />
+      </div>
 
+      <div class="line"></div><br />
+
+      <div class="github_buttons">
+        <iframe src="http://ghbtns.com/github-btn.html?user=GreeKATrina&repo=TreeOfLife&type=fork&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>
+        <iframe src="http://ghbtns.com/github-btn.html?user=GreeKATrina&repo=TreeOfLife&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>
+      </div>
+  </div>
 </div>
 
 <div id="center-container">
@@ -48,9 +71,18 @@ Tree of Life
 </div>
 
 <div id="right-container">
-
-<h4>Wikipedia Page</h4>
-
+  <div class="wiki_text">
+    <div class="wiki_image"><img src="http://38.media.tumblr.com/b377d707a3c47d07abaa3ba33ed08c64/tumblr_mmftr110BK1rhb9f5o2_r1_500.jpg"></div>
+    <br />
+    <h4>Tree Of Life</h4>
+    <p>The <b>tree of life</b> is a metaphor used to describe the relationships between organisms, both living and extinct. Its use dates back to at least the early 1800s. It was employed by Charles Darwin to express the concept of the branching divergence of varieties and then species in a process of common descent from ancestors. Ernst Haeckel coined the term phylogeny for the evolutionary relationships of species through time, and went further than Darwin in proposing phylogenic histories of life. The modern development of this idea is called the phylogenetic tree.</p>
+    <br />
+    <a href="http://www.open.edu/openlearn/nature-environment/natural-history/tree-life">Image Source</a>
+  </div>
+  <div class="right-footer">
+    <div class="line"></div>
+    <p class="copyright">This content is directly sourced from Wikipedia. The pictures and content do not belong to us.</p>
+  </div>
 </div>
 
 <div id="log"></div>

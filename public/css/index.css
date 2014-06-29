@@ -4,6 +4,9 @@ html, body {
     font-family: "Nexa Bold";
     font-size: 1em;
     text-align: center;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -11,25 +14,34 @@ html, body {
   src: url('../fonts/Nexa Bold.otf');
 }
 
-input, select {
-    font-size:0.9em;
+img {
+    padding-top: 10%;
+    width: 80%;
 }
 
-table {
-    margin-top:-10px;
-    margin-left:7px;
+.left_container_text, .wiki_text, .right-footer {
+    padding: 5%;
+    padding-bottom: 10%;
 }
 
 h4 {
     font-size:1.1em;
     text-decoration:none;
     font-weight:normal;
-    color:#F2F1EF;
+    color:#317FD9;
+}
+
+p {
+    font-size: .9em;
 }
 
 a {
-    color:#000;
+    color:#8E44AD;
     text-decoration: none;
+}
+
+b {
+    color: #317FD9;
 }
 
 #container {
@@ -47,11 +59,10 @@ a {
 
 #left-container, #right-container {
     width:17%;
-    color:#ABB7B7;
+    color:#F2F1EF;
     text-align: center;
     overflow: auto;
     background-color:#3E3E40;
-    border-bottom:1px solid #ddd;
 }
 
 #left-container {
@@ -74,10 +85,6 @@ a {
     background-color:#1FC677;
 }
 
-.text {
-    margin: 7px;
-}
-
 #inner-details {
     font-size:0.8em;
     list-style:none;
@@ -92,7 +99,6 @@ a {
     color:#F2F1EF;
 }
 
-
 #infovis {
     width:100%;
     height:100%;
@@ -102,4 +108,41 @@ a {
 
 label {
     color: #ABB7B7;
+}
+
+.line {
+    height: 1px;
+    width: 100%;
+    background-color: white;
+}
+
+.legend > p {
+    display: inline-block;
+}
+
+.legend > div {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: .3em;
+}
+
+.alive_selected {
+    background-color: #8E44AD;
+}
+
+.extinct_selected {
+    background-color: #490C60;
+}
+
+.alive_not_selected {
+    background-color: #317FD9;
+}
+
+.extinct_not_selected {
+    background-color: #204ABA;
+}
+
+#right-container > p {
+    padding: 5%;
 }

@@ -66,7 +66,7 @@
               height: 20,
               width: 150,
               type: 'rectangle',
-              color: '#fff',
+              color: '#317FD9',
               overridable: true
           },
           setColor: function(node){
@@ -120,9 +120,15 @@
                             success: function(response) {
                               console.log(response);
                               st.addSubtree(response.species, 'replot');
-                              $('#right-container').empty();
-                              $("#right-container").append("<div class='wiki_image'>" +  response.wiki_sidebar + "</div>");
-                              $("#right-container").append("<div class='wiki_title'><h1>" +  response.wiki.title + "</h1><p>" +  response.wiki.paragraph + "</p></div>");
+                              $('.wiki_text').empty();
+                              if (response.wiki.paragraphs){
+                                $("#right-container").prepend("<div class='wiki_text'><h4>" +  response.wiki.title + "</h4><p>" +  response.wiki.paragraphs + "</p></div>");
+                              } else {
+                                $("#right-container").prepend("<div class='wiki_text'><h4>" +  response.wiki.title + "</div>");
+                              }
+                              if (response.wiki_sidebar){
+                                $("#right-container").prepend("<div class='wiki_image'><img src='" +  response.wiki_sidebar + "'></div>");
+                              }
                             }
                           });
                       }
@@ -156,7 +162,7 @@
                       }
                   }
               }
-              // hacky way to make name-less nodes appear as lines
+              // name-less nodes will appear as common ancestors
               if (!node.name || node.name === 'Common Ancestor') {
                   node.name = 'Common Ancestor';
               }
