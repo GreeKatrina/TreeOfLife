@@ -53,7 +53,7 @@
           transition: $jit.Trans.Quart.easeInOut,
           //set distance between node and its children
           levelDistance: 50,
-          levelsToShow: 2,
+          levelsToShow: 1,
           //enable panning
           Navigation: {
             enable:true,
@@ -117,14 +117,12 @@
                             type: 'GET',
                             url: '/node-attributes',
                             data: { id: node.id },
-                            success: function(newNode) {
-                              console.log(newNode.children);
-                              // for (var child in newNode.children){
-                              //   if (child.name === null){
-                              //     st.onClick(node.id);
-                              //   }
-                              // }
-                              st.addSubtree(newNode, 'replot');
+                            success: function(response) {
+                              console.log(response);
+                              st.addSubtree(response.species, 'replot');
+                              $('#right-container').empty();
+                              $("#right-container").append("<div class='wiki_image'>" +  response.wiki_sidebar + "</div>");
+                              $("#right-container").append("<div class='wiki_title'><h1>" +  response.wiki.title + "</h1><p>" +  response.wiki.paragraph + "</p></div>");
                             }
                           });
                       }
@@ -159,14 +157,8 @@
                   }
               }
               // hacky way to make name-less nodes appear as lines
-              if (node.name === undefined) {
-                  if (node.selected) {
-                      node.data.$height = 3;
-                      node.data.$color = "#F2F1EF";
-                  } else {
-                      node.data.$height = 2;
-                      node.data.$color  = "#3E3E40";
-                  }
+              if (!node.name || node.name === 'Common Ancestor') {
+                  node.name = 'Common Ancestor';
               }
           },
 

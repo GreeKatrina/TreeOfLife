@@ -46,7 +46,7 @@ a {
 }
 
 #left-container, #right-container {
-    width:15%;
+    width:17%;
     color:#ABB7B7;
     text-align: center;
     overflow: auto;
@@ -69,8 +69,8 @@ a {
 }
 
 #center-container {
-    width:70%;
-    left:15.1%;
+    width:66%;
+    left:17.1%;
     background-color:#1FC677;
 }
 
