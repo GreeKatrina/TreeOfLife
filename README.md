@@ -25,14 +25,15 @@ Ashley McKemie
 
 First, move to the folder you want the repo to be in, then clone it down and bundle install all of the gems.
 
-,,,
+```
 $ cd /the/folder/you/choose
 $ git clone https://github.com/GreeKatrina/TreeOfLife.git
 $ bundle install
-,,,
+```
 Second, create the database, migrate, and then seed the database with the Tree Of Life JSON file.
-,,,
+
+```
 $ rake db:create
 $ rake db:migrate
 $ rake setup:seed_database
-,,,
+```
