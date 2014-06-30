@@ -121,13 +121,13 @@
                               console.log(response);
                               st.addSubtree(response.species, 'replot');
                               $('.wiki_text').empty();
-                              if (response.wiki.paragraphs){
-                                $("#right-container").prepend("<div class='wiki_text'><h4>" +  response.wiki.title + "</h4><p>" +  response.wiki.paragraphs + "</p></div>");
-                              } else {
-                                $("#right-container").prepend("<div class='wiki_text'><h4>" +  response.wiki.title + "</div>");
-                              }
                               if (response.wiki_sidebar){
-                                $("#right-container").prepend("<div class='wiki_image'><img src='" +  response.wiki_sidebar + "'></div>");
+                                $(".wiki_text").append("<div class='wiki_image'><img src='" +  response.wiki_sidebar + "'></div>");
+                              }
+                              if (response.wiki.paragraphs){
+                                $(".wiki_text").append("<div class='wiki_text'><h4>" +  response.wiki.title + "</h4>" +  response.wiki.paragraphs + "</div>");
+                              } else {
+                                $(".wiki_text").append("<div class='wiki_text'><h4>" +  response.wiki.title + "</div>");
                               }
                             }
                           });
