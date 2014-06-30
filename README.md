@@ -11,15 +11,20 @@ Katrina Theodosopoulos
 + GitHub: https://github.com/greekatrina
 
 Ashley McKemie
++ Email: ashley.mckemie@mgail.com
++ Twitter: http://twitter.com/amckemie
++ GitHub: https://github.com/amckemie
 
 ## Development
 
-+ Ruby 2.1.1.
++ Ruby 2.1.1
 + Sinatra
 + ActiveRecord
-+ Postgres
++ PostgreSQL
 + WikiWhat
 + Infovis (JIT)
++ Postman
++ JSON / XML
 
 ## Clone Down Our Repo
 
