@@ -3,10 +3,7 @@ Tree of Life
 
 Tree of Life is a data visualization app that allows people to click through a tree, using Infovis - a Javascript toolkit, using the Tree of Life API.
 
----
-
-Authors
-## H2
+## Authors
 
 Katrina Theodosopoulos
 + Email: katrinaelaine6@mgail.com
@@ -15,8 +12,7 @@ Katrina Theodosopoulos
 
 Ashley McKemie
 
-Development
-## H2
+## Development
 
 + Ruby 2.1.1.
 + Sinatra
@@ -25,8 +21,7 @@ Development
 + WikiWhat
 + Infovis (JIT)
 
-Clone Down Our Repo
-## H2
+## Clone Down Our Repo
 
 First, move to the folder you want the repo to be in, then clone it down and bundle install all of the gems.
 
