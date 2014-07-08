@@ -1,4 +1,7 @@
-configure :production, :development, :test do
+require 'active_record'
+require 'active_record_tasks'
+
+ActiveRecordTasks.configure do
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/TreeOfLife_development')
 
   ActiveRecord::Base.establish_connection(
