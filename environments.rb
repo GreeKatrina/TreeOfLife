@@ -2,7 +2,7 @@ require 'active_record'
 require 'active_record_tasks'
 require 'sinatra'
 
-set :environment, :production, :development, :test
+set :environment, :production
 
 ActiveRecordTasks.configure do
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/TreeOfLife_development')
