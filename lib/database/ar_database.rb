@@ -8,7 +8,9 @@ module TreeOfLife
     def initialize
       ActiveRecord::Base.establish_connection(
       :adapter => 'postgresql',
-      :database => 'TreeOfLife_production'
+      :database => 'TreeOfLife_production',
+      :user => ENV['DB_USER'] || '',
+      :password => ENV['DB_PASSWORD'] || ''
       )
     end
 

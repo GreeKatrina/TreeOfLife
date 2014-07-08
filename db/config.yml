@@ -1,3 +1,10 @@
+production:
+  adapter: postgresql
+  database: d8upkhenvlh40m
+  pool: 5
+  timeout: 5000
+  port: 5432
+
 development:
   adapter: postgresql
   database: TreeOfLife_dev

@@ -2,13 +2,13 @@ require 'active_record_tasks'
 require './lib/tree_of_life.rb'
 require 'sinatra'
 
-set :environment, :development
+set :environment, :development, :production
 
 ActiveRecordTasks.configure do |config|
   # These are all the default values
   config.db_dir = 'db'
   config.db_config_path = 'db/config.yml'
-  config.env = 'development'
+  config.env = ENV['RACK_ENV'] || 'development'
 end
 
 # Run this AFTER you've configured
