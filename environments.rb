@@ -5,6 +5,7 @@ require 'sinatra'
 configure :production do
   if ENV['DATABASE_URL']
     ActiveRecord::Base.establish_connection(
+      :adapter => 'posgresql'
       :url => ENV['DATABASE_URL']
     )
   else
