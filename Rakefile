@@ -18,6 +18,7 @@ ActiveRecordTasks.configure do |config|
   if config.env == 'production'
     Rake::Task["db:load_config"].invoke
     production_config = ActiveRecord::Tasks::DatabaseTasks.database_configuration['production']
+    production_config['hostname'] = ENV['DB_HOST']
     production_config['username'] = ENV['DB_USER']
     production_config['password'] = ENV['DB_PASSWORD']
     production_config['database'] = ENV['TOL_DB']
