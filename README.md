@@ -109,7 +109,20 @@ The JSON you would get back:
 ```
 
 The id numbers start at 1 with 'Life on Earth', and up to around 70,800.
-The "wiki" object includes the title and first paragraph from Wikipedia's website that we grabbed using https://github.com/BonMatts/wikiwhat. The "wiki_sidebar" is the url for the image that Wikipedia has on their site for that node.
+
+"phylesis" - will be either 0 - monophyletic, 1 - monophyly uncertain, or 2 - not monophyletic
+More information on monophyly: https://www.mun.ca/biology/scarr/Taxon_types.htm
+
+"extinct" - will be true or false
+
+"leaf" - will be either true - it represents a leaf (no child nodes) or false - it does not represent a leaf (will have child nodes).
+More information on leaf nodes: https://www.princeton.edu/~achaney/tmve/wiki100k/docs/Leaf_node.html
+
+"data" - this was used for infovis to store data to edit the css for each node. This will always be an empty object.
+
+"wiki" - an object that includes the title and first paragraph from Wikipedia's website that we grabbed using https://github.com/BonMatts/wikiwhat.
+
+"wiki_sidebar" - the url for the image that Wikipedia has on their site for that node.
 
 The original API came from tolweb.org. We converted it from XML to JSON.
 
