@@ -11,14 +11,15 @@
 
 development:
   adapter: postgresql
+  encoding: unicode
+  database: TreeOfLife_development
   host: localhost
-  database: TreeOfLife_dev
-  pool: 5
-  timeout: 5000
+  password:
 
 test:
   adapter: postgresql
-  host: localhost
+  encoding: unicode
   database: TreeOfLife_test
   pool: 5
-  timeout: 5000
+  host: localhost
+  password:
