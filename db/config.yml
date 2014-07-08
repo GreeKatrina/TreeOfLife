@@ -1,6 +1,10 @@
 production:
   adapter: postgresql
-  hostname: localhost
+  url: <%= ENV['DATABASE_URL'] %>
+  hostname: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['TOL_DB'] %>
   pool: 5
   timeout: 5000
   port: 5432
