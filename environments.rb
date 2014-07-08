@@ -8,7 +8,7 @@ configure :production do
       :url => ENV['DATABASE_URL']
     )
   else
-    db = URI.parse( || 'postgres://localhost/TreeOfLife_development')
+    db = URI.parse('postgres://localhost/TreeOfLife_development')
 
     ActiveRecord::Base.establish_connection(
       :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
