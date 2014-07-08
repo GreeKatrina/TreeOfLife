@@ -1,6 +1,7 @@
 production:
   adapter: postgresql
   database: d8upkhenvlh40m
+  hostname: localhost
   pool: 5
   timeout: 5000
   port: 5432
