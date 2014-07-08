@@ -9,7 +9,7 @@ module TreeOfLife
     def initialize
       ActiveRecord::Base.establish_connection(
       :adapter => 'postgresql',
-      :database => 'TreeOfLife_dev'
+      :database => 'TreeOfLife_production'
       )
     end
 
