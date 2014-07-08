@@ -6,7 +6,6 @@ module TreeOfLife
     file = File.read('tree_of_life_data.json')
     data_hash = JSON.parse(file, :max_nesting => 500)
     starting_point = data_hash['TREE']['NODES']
-    # binding.pry
     database_helper(0, starting_point)
   end
 
@@ -14,7 +13,6 @@ module TreeOfLife
     node_pointer = tree_hash['NODE']
     if node_pointer.class == Hash
       next_parent_id = node_pointer['@ID'].to_i
-      # binding.pry
       create_record_helper(parent_id, node_pointer)
       # Recursive call
       if node_pointer['@CHILDCOUNT'] != "0"

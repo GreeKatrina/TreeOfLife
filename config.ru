@@ -1,2 +1,2 @@
-require 'tol_sinatra.rb'
+require './tol_sinatra'
 run Sinatra::Application
