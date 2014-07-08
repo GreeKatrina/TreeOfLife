@@ -12,7 +12,7 @@ require 'sinatra'
 # end
 
 # # Run this AFTER you've configured
-# ActiveRecordTasks.load_tasks
+ActiveRecordTasks.load_tasks
 
 # puts ActiveRecord::Tasks::DatabaseTasks.database_configuration
 
