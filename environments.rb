@@ -16,7 +16,7 @@ require 'sinatra'
 # end
 
 configure :production do
-  # db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/TreeOfLife_development')
+  db = URI.parse(ENV['DATABASE_URL'])
 
   ActiveRecord::Base.establish_connection(
       :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
