@@ -1,6 +1,6 @@
 require 'active_record_tasks'
-require './lib/tree_of_life.rb'
-require 'sinatra'
+# require './lib/tree_of_life.rb'
+# require 'sinatra'
 
 # set :environment, :development, :production
 
