@@ -6,15 +6,15 @@ module TreeOfLife
   end
   class ActiveRecordDatabase
     def initialize
-      environment = ENV['RACK_ENV'] || 'development'
-      if environment == 'development'
-        ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
-      else
-        ActiveRecord::Base.establish_connection(
-          :adapter => 'postgresql',
-          :database => 'TreeOfLife_dev'
-        )
-      end
+      # environment = ENV['RACK_ENV'] || 'development'
+      # if environment == 'development'
+      #   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
+      # else
+      #   ActiveRecord::Base.establish_connection(
+      #     :adapter => 'postgresql',
+      #     :database => 'TreeOfLife_dev'
+      #   )
+      # end
     end
 
     class Species < ActiveRecord::Base

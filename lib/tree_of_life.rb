@@ -1,5 +1,6 @@
 require 'json'
 require 'wikiwhat'
+require './environments.rb'
 
 module TreeOfLife
   def self.db

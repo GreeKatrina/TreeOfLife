@@ -4,7 +4,7 @@ ruby '2.1.1'
 gem 'pg'
 gem 'activerecord', '~> 4.1.0'
 gem 'active_record_tasks', '~> 1.1.0'
-gem 'sinatra'
+gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib' #reloader so you dont have to restart server
 gem 'thin'
 gem 'rack-test'
