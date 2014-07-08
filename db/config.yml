@@ -1,13 +1,13 @@
-production:
-  adapter: postgresql
-  url: <%= ENV['TOL_URL'] %>
-  hostname: <%= ENV['TOL_URL'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  database: <%= ENV['TOL_DB'] %>
-  pool: 5
-  timeout: 5000
-  port: 5432
+# production:
+#   adapter: postgresql
+#   url: <%= ENV['TOL_URL'] %>
+#   hostname: <%= ENV['TOL_URL'] %>
+#   username: <%= ENV['DB_USER'] %>
+#   password: <%= ENV['DB_PASSWORD'] %>
+#   database: <%= ENV['TOL_DB'] %>
+#   pool: 5
+#   timeout: 5000
+#   port: 5432
 
 development:
   adapter: postgresql
