@@ -1,4 +1,3 @@
-
 class TreeOfLife::GetSpeciesData
   def run(species_id)
     returned_species = TreeOfLife.db.get_species_by_id(species_id)

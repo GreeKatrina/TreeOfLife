@@ -1,5 +1,4 @@
 require 'json'
-require 'pry'
 
 module TreeOfLife
   def self.getStart

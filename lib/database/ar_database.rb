@@ -1,5 +1,4 @@
 require 'active_record'
-require 'pry'
 
 module TreeOfLife
   ActiveSupport::Inflector.inflections(:en) do |inflect|
