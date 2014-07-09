@@ -133,3 +133,4 @@ The original API came from tolweb.org. We converted it from XML to JSON.
 + Make it possible to get species by name
 + Fix null nodes (Common Ancestors)
 + Make app not display Wikipedia info for things that are not species (ex: 'Node 1' is actually part of the International Space Station)
++ Create more RESTful api
