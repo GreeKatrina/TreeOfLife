@@ -3,7 +3,7 @@ Tree of Life
 
 tol.herokuapp.com
 
-Tree of Life is a data visualization app that allows people to click through a dynamic tree built with Infovis - a Javascript toolkit, using data from the Tree of Life API.
+Tree of Life is a data visualization app that allows people to click through a dynamic tree, built with Infovis - a Javascript toolkit, using data from the Tree of Life API.
 
 ## Authors
 
